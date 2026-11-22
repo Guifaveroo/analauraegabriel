@@ -1,11 +1,13 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef } from "react";
 
 /** Campos antispam invisíveis: isca + horário de abertura do formulário. */
 export function SpamFields() {
-  const [t, setT] = useState("");
-  useEffect(() => setT(String(Date.now())), []);
+  const ref = useRef<HTMLInputElement>(null);
+  useEffect(() => {
+    if (ref.current) ref.current.value = String(Date.now());
+  }, []);
   return (
     <>
       <div className="honeypot" aria-hidden>
@@ -14,7 +16,7 @@ export function SpamFields() {
           <input type="text" name="website" tabIndex={-1} autoComplete="off" />
         </label>
       </div>
-      <input type="hidden" name="_t" value={t} />
+      <input ref={ref} type="hidden" name="_t" defaultValue="" />
     </>
   );
 }

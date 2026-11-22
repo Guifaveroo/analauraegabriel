@@ -19,7 +19,6 @@ export default async function OgImage() {
     (
       <div style={{ width: "100%", height: "100%", display: "flex", position: "relative", background: theme.primary }}>
         {bg && (
-          // eslint-disable-next-line @next/next/no-img-element
           <img src={bg} alt="" width={1200} height={630} style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover" }} />
         )}
         <div style={{ position: "absolute", inset: 0, background: "rgba(0,0,0,0.38)", display: "flex" }} />

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { getPublicSiteData } from "@/lib/data/site";
 import { themeToCssVars } from "@/lib/themes/css";
 
@@ -11,7 +12,7 @@ export default async function PrivacyPage() {
   return (
     <div className="site" style={themeToCssVars(theme)}>
       <main className="mx-auto max-w-2xl px-5 py-16 leading-7">
-        <a href="/" className="text-xs uppercase tracking-[0.2em] opacity-80">← Voltar ao site</a>
+        <Link href="/" className="text-xs uppercase tracking-[0.2em] opacity-80">← Voltar ao site</Link>
         <h1 className="heading-lg mt-8">Política de privacidade</h1>
         <div className="muted mt-8 space-y-5 text-sm sm:text-base">
           <p>

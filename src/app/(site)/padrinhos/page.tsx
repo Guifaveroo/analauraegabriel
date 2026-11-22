@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { cookies } from "next/headers";
 import { getProtectedSection, getPublicSiteData } from "@/lib/data/site";
 import { createServiceClient } from "@/lib/supabase/admin";
@@ -32,12 +33,12 @@ export default async function GodparentsPage() {
   return (
     <div className="site" style={style}>
       <header className="flex h-16 items-center justify-between px-5 sm:px-8">
-        <a href="/" className="font-heading text-2xl">
+        <Link href="/" className="font-heading text-2xl">
           {data.settings.partner1_name.charAt(0)}&{data.settings.partner2_name.charAt(0)}
-        </a>
-        <a href="/" className="text-xs uppercase tracking-[0.2em] opacity-80 hover:opacity-100">
+        </Link>
+        <Link href="/" className="text-xs uppercase tracking-[0.2em] opacity-80 hover:opacity-100">
           ← Voltar ao site
-        </a>
+        </Link>
       </header>
 
       {!meta ? (

@@ -122,8 +122,10 @@ function AnswerFields({
 
 export function Rsvp({ content, settings, decoration, preview }: Props) {
   const closedMode = settings.rsvp_mode === "closed";
-  const deadlinePassed = settings.rsvp_deadline ? new Date(settings.rsvp_deadline).getTime() < Date.now() : false;
 
+  const [deadlinePassed] = useState(() =>
+    settings.rsvp_deadline ? new Date(settings.rsvp_deadline).getTime() < Date.now() : false,
+  );
   const [code, setCode] = useState("");
   const [lookupName, setLookupName] = useState("");
   const [guests, setGuests] = useState<RsvpGuest[] | null>(null);
@@ -138,6 +140,7 @@ export function Rsvp({ content, settings, decoration, preview }: Props) {
     setError(null);
     startTransition(async () => {
       const res = await lookupInvite(c, n);
+      if (c) setCode(c);
       if (!res.ok) return setError(res.error);
       setGuests(res.data.guests);
       setFamily(res.data.family);
@@ -149,10 +152,9 @@ export function Rsvp({ content, settings, decoration, preview }: Props) {
   useEffect(() => {
     if (!closedMode || preview) return;
     const c = new URLSearchParams(window.location.search).get("convite");
-    if (c) {
-      setCode(c);
-      runLookup(c, "");
-    }
+    if (!c) return;
+    const t = setTimeout(() => runLookup(c, ""), 0);
+    return () => clearTimeout(t);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
