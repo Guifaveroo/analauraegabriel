@@ -236,7 +236,13 @@ export function Rsvp({ content, settings, decoration, preview }: Props) {
             <p className="muted text-xs">Para alterar, fale diretamente com os noivos.</p>
           </div>
         ) : (
-          <form action={submit} className="space-y-8">
+          <form
+            onSubmit={(e) => {
+              e.preventDefault();
+              submit(new FormData(e.currentTarget));
+            }}
+            className="space-y-8"
+          >
             <SpamFields />
             {family && <p className="eyebrow text-center">{family}</p>}
             {answers.map((a, i) => {

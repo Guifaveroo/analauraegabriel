@@ -53,7 +53,7 @@ export function Countdown({
         const value = parts?.[key];
         return (
           <div key={key} className={`flex min-w-[4.2rem] flex-col items-center border px-2 py-3 sm:min-w-[6rem] sm:py-5 ${boxClass}`}>
-            <span className="font-heading text-3xl tabular-nums sm:text-5xl" suppressHydrationWarning>
+            <span className="nums font-heading text-3xl sm:text-5xl" suppressHydrationWarning>
               {value === undefined ? "–" : String(value).padStart(2, "0")}
             </span>
             <span className="mt-1 text-[0.6rem] uppercase tracking-[0.2em] opacity-80 sm:text-[0.68rem]">

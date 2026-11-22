@@ -100,7 +100,7 @@ export function SiteRenderer({ data, preview = false }: Props) {
       }
       case "godparents": {
         const c = s.content as SectionContentMap["godparents"];
-        return s.is_protected ? (
+        return s.is_protected && !preview ? (
           <GodparentsTeaser key={s.key} title={c.title || "Manual dos padrinhos"} decoration={deco} />
         ) : (
           <GodparentsManual key={s.key} content={c} settings={settings} photos={photos} decoration={deco} />

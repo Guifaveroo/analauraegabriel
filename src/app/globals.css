@@ -46,6 +46,7 @@ body {
   *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
 }
 
+@layer components {
 /* ---------------------------------------------------------------- site --- */
 .site {
   background: var(--c-bg);
@@ -175,3 +176,6 @@ body {
 .admin-btn-success { background: #2f6b4f; }
 .admin-btn-success:hover { background: #255a41; }
 .admin-card { background: #fff; border: 1px solid #ebe5dc; border-radius: 0.9rem; }
+
+.nums { font-variant-numeric: lining-nums tabular-nums; }
+}

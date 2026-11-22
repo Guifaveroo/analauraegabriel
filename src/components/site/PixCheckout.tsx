@@ -110,7 +110,13 @@ export function PixCheckout({ gift, photo, thankYou, preview, onClose }: Props) 
         </div>
 
         {step === "form" && (
-          <form action={submit} className="space-y-5 p-5 sm:p-7">
+          <form
+            onSubmit={(e) => {
+              e.preventDefault();
+              submit(new FormData(e.currentTarget));
+            }}
+            className="space-y-5 p-5 sm:p-7"
+          >
             {gift.description && <p className="muted text-sm leading-6">{gift.description}</p>}
             <input type="hidden" name="giftId" value={gift.id} />
             <SpamFields />

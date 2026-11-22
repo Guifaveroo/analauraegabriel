@@ -38,7 +38,14 @@ export function Messages({ content, messages, decoration, timezone, preview }: P
     <SectionShell id="recados" eyebrow="Mural" title={content.title} subtitle={content.subtitle} decoration={decoration} tone="tint">
       <div className="grid gap-10 lg:grid-cols-5">
         <Reveal className="lg:col-span-2">
-          <form ref={formRef} action={submit} className="card space-y-5 p-6 sm:p-8">
+          <form
+            ref={formRef}
+            onSubmit={(e) => {
+              e.preventDefault();
+              submit(new FormData(e.currentTarget));
+            }}
+            className="card space-y-5 p-6 sm:p-8"
+          >
             <SpamFields />
             <div>
               <label htmlFor="msg-name" className="label">Seu nome</label>
