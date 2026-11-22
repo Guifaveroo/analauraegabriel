@@ -35,6 +35,9 @@ tests/                   unitários (vitest), SQL (regras + concorrência) e pon
    2. `0002_security_functions.sql`
    3. `0003_storage.sql`
    4. `0004_seed.sql` (conteúdo de exemplo, que vocês editam depois pelo painel)
+   5. `0005_grants.sql` (permissões de acesso às tabelas)
+
+   Ou execute de uma vez `supabase/setup-completo.sql`, que junta todos.
 3. Em **Authentication → Sign In / Providers**:
    - desative **Allow new users to sign up**. Só os noivos acessam.
    - mantenha **Email** habilitado.
